@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "lsmdb-cli",
+    "lsmdb-storage",
+]
+
+[profile.bench]
+debug = false
