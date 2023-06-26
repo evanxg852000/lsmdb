@@ -1,7 +1,8 @@
 [workspace]
 members = [
-    "lsmdb-cli",
-    "lsmdb-storage",
+    "cli",
+    "storage",
+    "query"
 ]
 
 [profile.bench]
