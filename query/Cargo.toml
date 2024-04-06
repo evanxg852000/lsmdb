@@ -1,0 +1,10 @@
+[package]
+name = "query"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+thiserror = "1.0.32"
+pest = "2.5.2"
+pest_derive = "2.5.2"

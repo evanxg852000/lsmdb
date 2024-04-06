@@ -1,0 +1,29 @@
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+ident = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
+
+simple_expr = { column_expr ~ ("==" | "!=" | ">" | ">=" | "<" | "<=") ~ column_expr}
+
+all_column = {"*"}
+column_expr = { (ident ~ ".")? ~ ( ident | all_column  )  }
+column_list = { column_expr ~ ("," ~ column_expr)* ~ !"," }
+select_opt = { "distinct" }
+where_clause = {"where" ~ simple_expr }
+group_by = {"group by" ~ column_expr }
+order = { "asc" | "desc" }
+order_by = { "order by" ~ order }
+select_stmt = { 
+	"select" ~ select_opt? ~ column_list 
+	~ "from"  ~ ident 
+    ~ where_clause?
+    ~ group_by?
+    ~ order_by?
+    ~ ";"
+}
+
+
+
+ddl_stmt = { (create_table | alter_table | drop_table | create_index | drop_index) }
+dml_stmt = { (select | insert | update | delete ) }
+statement = { (ddl_stmt | dml_stmt ) }
+
+program = { SOI ~ (statement)* ~ EOI}

@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "cli",
+    "storage",
+    # "query"
+]
+
+[profile.bench]
+debug = false
